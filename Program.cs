@@ -14,30 +14,11 @@ namespace IPFramesMonitor
 
             SQLiteConnection conn = new SQLiteConnection(strConn);
 
-            /*
-                conn.Open();
-
-                String sql = "select sum(i), sum(p) from Frames WHERE TimeStamp > datetime('now', 'localtime', '-1 minutes');";
-
-                SQLiteCommand cmd = new SQLiteCommand(sql, conn);
-                SQLiteDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    Console.WriteLine("i frames={0}, p frames={1}", reader["sum(i)"], reader["sum(p)"]);                    
-                }
-
-                reader.Close();
-                cmd.Dispose();
-                conn.Close();
-            */
-
-
-            /* 분단위 체크 */
 
             while (true)
             { 
                 conn.Open();
-
+                /* 분단위 체크 */
                 String sql = "select sum(i), sum(p) from Frames WHERE TimeStamp > datetime('now', 'localtime', '-1 minutes');";
 
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
